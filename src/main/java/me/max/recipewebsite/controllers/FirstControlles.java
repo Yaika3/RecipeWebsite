@@ -1,7 +1,11 @@
 package me.max.recipewebsite.controllers;
 
+import model.Ingredient;
+import model.Recipe;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import services.RecipeServicesImpl;
 
 @RestController
 public class FirstControlles {
@@ -29,4 +33,14 @@ public class FirstControlles {
     public String description(){
         return "готовим всегда)) ";
     }
+    @GetMapping("/addIngredient")
+    public void addIngredient(@RequestParam Ingredient ingredient ){
+        RecipeServicesImpl.addIngredient(ingredient);
+    }
+    @GetMapping("/addIngredient")
+    public void addRecipe(@RequestParam Recipe recipe){
+        RecipeServicesImpl.addRecipe(recipe);
+    }
+
+
 }
