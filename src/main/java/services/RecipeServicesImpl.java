@@ -23,7 +23,7 @@ public class RecipeServicesImpl {
         recipeMap.put(id++ , recipe);
 
     }
-    public void getIngredient(id){}
+    public void getIngredient(){}
 
 
 
