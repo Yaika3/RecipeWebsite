@@ -11,19 +11,15 @@ import java.util.TreeMap;
 public class RecipeServicesImpl {
 
     public static int id = 0;
-    private static Map <Integer, Ingredient> ingredientMap = new TreeMap<>();
     private static Map <Integer, Recipe> recipeMap = new TreeMap<>();
 
-
-    public static void addIngredient(Ingredient ingredient){
-    ingredientMap.put(id++ , ingredient);
-
-    }
     public static void addRecipe(Recipe recipe){
         recipeMap.put(id++ , recipe);
 
     }
-    public void getIngredient(){}
+    public void getIngredient(int id){
+        recipeMap.get(id);
+    }
 
 
 
