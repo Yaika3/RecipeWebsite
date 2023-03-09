@@ -36,7 +36,7 @@ public class FirstControlles {
     }
     @GetMapping("/addIngredient")
     public void addIngredient(@RequestParam Ingredient ingredient ){
-        IngredientServiceImpl.addIngredient(ingredient);
+        IngredientController.addIngredient(ingredient);
     }
     @GetMapping("/addIngredient")
     public void addRecipe(@RequestParam Recipe recipe){
