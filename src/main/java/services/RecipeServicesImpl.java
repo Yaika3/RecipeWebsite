@@ -16,10 +16,23 @@ public class RecipeServicesImpl {
         recipeMap.put(id++ , recipe);
 
     }
-    public Recipe getIngredient(int id){
+    public Recipe getRecipe(int id){
          return recipeMap.get(id);
+    }
+    public Recipe editRecipe (int id, Recipe recipe){
+        recipe.setTitle();
+        return recipeMap.get(id);
+
+    }
+
+    public boolean deleteRecipe(int id ){
+                recipeMap.remove(id);
+        return true;
+    }
+
+
     }
 
 
 
-}
+

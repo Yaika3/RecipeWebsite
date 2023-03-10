@@ -17,5 +17,16 @@ public class IngredientServiceImpl {
         return ingredientMap.get(id);
     }
 
+    public Ingredient editIngredient (int id, Ingredient ingredient){
+        ingredient.setTitle();
+        return ingredientMap.get(id);
+
+    }
+
+    public boolean deleteIngredient(int id ){
+        ingredientMap.remove(id);
+        return true;
+    }
+
 
 }
