@@ -34,14 +34,7 @@ public class FirstControlles {
     public String description(){
         return "готовим всегда)) ";
     }
-    @GetMapping("/addIngredient")
-    public void addIngredient(@RequestParam Ingredient ingredient ){
-        IngredientController.addIngredient(ingredient);
-    }
-    @GetMapping("/addRecipe")
-    public void addRecipe(@RequestParam Recipe recipe){
-        RecipeServicesImpl.addRecipe(recipe);
-    }
+
 
 
 }

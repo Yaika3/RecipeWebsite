@@ -4,6 +4,7 @@ import model.Ingredient;
 import model.Recipe;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import services.RecipeServicesImpl;
 
 @Controller
@@ -15,12 +16,12 @@ public class RecipeControlle {
         this.recipeServices = recipeServices;
     }
 
-    @GetMapping("/addRecipe")
+    @PostMapping("/addRecipe")
     public void addRecipe(Recipe recipe){
-        recipeMap.put(id++ , recipe);
+        recipeServices.addRecipe(recipe);
 
-    }
+    }@GetMapping("/getRecipe")
     public Recipe getIngredient(int id){
-        return recipeMap.get(id);
+        return recipeServices.getIngredient(id);
     }
 }

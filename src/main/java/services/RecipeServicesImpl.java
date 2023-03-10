@@ -12,13 +12,13 @@ public class RecipeServicesImpl {
     public int id = 0;
     private Map <Integer, Recipe> recipeMap = new TreeMap<>();
 
-//    public void addRecipe(Recipe recipe){
-//        recipeMap.put(id++ , recipe);
-//
-//    }
-//    public Recipe getIngredient(int id){
-//         return recipeMap.get(id);
-//    }
+    public void addRecipe(Recipe recipe){
+        recipeMap.put(id++ , recipe);
+
+    }
+    public Recipe getIngredient(int id){
+         return recipeMap.get(id);
+    }
 
 
 

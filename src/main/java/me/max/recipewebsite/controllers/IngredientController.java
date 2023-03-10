@@ -3,6 +3,7 @@ package me.max.recipewebsite.controllers;
 import model.Ingredient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import services.IngredientServiceImpl;
 
 import java.util.Map;
@@ -16,14 +17,14 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
 
-    public int id = 0;
-    private Map<Integer, Ingredient> ingredientMap = new TreeMap<>();
-    @GetMapping("/addIngredient")
-    public void addIngredient(Ingredient ingredient){
-        ingredientMap.put(id++ , ingredient);
 
-    }
+    @PostMapping ("/addIngredient")
+    public void addIngredient(Ingredient ingredient){
+        ingredientService.addIngredient(ingredient);
+
+    }@GetMapping("/getIngredient")
     public Ingredient getIngredient(int id){
-        return ingredientMap.get(id);
+
+        return ingredientService.getIngredient(id);
     }
 }
