@@ -2,13 +2,14 @@ package services;
 
 import model.Ingredient;
 import model.Recipe;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.TreeMap;
-
+@Service
 public class IngredientServiceImpl {
     public int id = 0;
-    private Map<Integer, Ingredient> ingredientMap = new TreeMap<>();
+    private final Map<Integer, Ingredient> ingredientMap = new TreeMap<>();
     public void addIngredient(Ingredient ingredient){
         ingredientMap.put(id++ ,ingredient);
 

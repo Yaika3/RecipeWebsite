@@ -10,7 +10,7 @@ import java.util.TreeMap;
 public class RecipeServicesImpl {
 
     public int id = 0;
-    private Map <Integer, Recipe> recipeMap = new TreeMap<>();
+    private final Map <Integer, Recipe> recipeMap = new TreeMap<>();
 
     public void addRecipe(Recipe recipe){
         recipeMap.put(id++ , recipe);

@@ -14,7 +14,7 @@ import java.util.TreeMap;
 
 @Controller
 public class IngredientController {
-    private IngredientServiceImpl ingredientService;
+    private final IngredientServiceImpl ingredientService;
 
     public IngredientController(IngredientServiceImpl ingredientService) {
         this.ingredientService = ingredientService;

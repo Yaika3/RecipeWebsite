@@ -10,7 +10,7 @@ import services.RecipeServicesImpl;
 @Controller
 public class RecipeControlle {
 
-    private RecipeServicesImpl recipeServices;
+    private final RecipeServicesImpl recipeServices;
 
     public RecipeControlle(RecipeServicesImpl recipeServices) {
         this.recipeServices = recipeServices;
