@@ -17,11 +17,13 @@ public class RecipeControlle {
     }
 
     @PostMapping("/{id}")
-    public void addRecipe(@PathVariable int id, Recipe recipe){
+    public void addRecipe(@PathVariable int id, Recipe recipe) {
         recipeServices.addRecipe(recipe);
 
-    }@GetMapping("/{id}")
-    public Recipe getRecipe(int id){
+    }
+
+    @GetMapping("/{id}")
+    public Recipe getRecipe(int id) {
         return recipeServices.getRecipe(id);
     }
 //
@@ -30,10 +32,11 @@ public class RecipeControlle {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRecipe(@PathVariable int id){
-        if (recipeServices.deleteRecipe(id)){
+    public ResponseEntity<Void> deleteRecipe(@PathVariable int id) {
+        if (recipeServices.deleteRecipe(id)) {
             return ResponseEntity.ok().build();
-        }return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.notFound().build();
 
     }
 }
