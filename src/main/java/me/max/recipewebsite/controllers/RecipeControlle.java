@@ -1,11 +1,10 @@
 package me.max.recipewebsite.controllers;
 
-import model.Ingredient;
-import model.Recipe;
+import me.max.recipewebsite.model.Recipe;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import services.RecipeServicesImpl;
+import me.max.recipewebsite.services.RecipeServicesImpl;
 
 @Controller
 public class RecipeControlle {

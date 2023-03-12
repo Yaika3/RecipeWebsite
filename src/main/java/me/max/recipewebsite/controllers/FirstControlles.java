@@ -1,12 +1,7 @@
 package me.max.recipewebsite.controllers;
 
-import model.Ingredient;
-import model.Recipe;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import services.IngredientServiceImpl;
-import services.RecipeServicesImpl;
 
 @RestController
 public class FirstControlles {

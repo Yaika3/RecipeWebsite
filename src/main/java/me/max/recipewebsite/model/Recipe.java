@@ -1,4 +1,4 @@
-package model;
+package me.max.recipewebsite.model;
 
 import lombok.Data;
 

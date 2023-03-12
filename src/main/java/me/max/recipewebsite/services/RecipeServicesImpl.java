@@ -1,8 +1,8 @@
-package services;
+package me.max.recipewebsite.services;
 
 import io.swagger.v3.oas.annotations.Operation;
-import model.Ingredient;
-import model.Recipe;
+import me.max.recipewebsite.model.Ingredient;
+import me.max.recipewebsite.model.Recipe;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
