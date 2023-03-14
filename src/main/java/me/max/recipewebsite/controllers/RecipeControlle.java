@@ -1,11 +1,12 @@
 package me.max.recipewebsite.controllers;
 
+import me.max.recipewebsite.model.Ingredient;
 import me.max.recipewebsite.model.Recipe;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import me.max.recipewebsite.services.RecipeServicesImpl;
-
+@RequestMapping("/recipes")
 @Controller
 public class RecipeControlle {
 
@@ -25,9 +26,11 @@ public class RecipeControlle {
     public Recipe getRecipe(int id) {
         return recipeServices.getRecipe(id);
     }
-//
-//    @PutMapping("/{id}")
-//    public Recipe
+
+    @PutMapping("/{id}")
+    public Ingredient editRecipe(int id, Recipe recipe) {
+        return recipeServices.editRecipe(id, recipe).getBody();
+    }
 
 
     @DeleteMapping("/{id}")
