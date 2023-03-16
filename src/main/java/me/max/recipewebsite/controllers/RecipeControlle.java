@@ -1,13 +1,15 @@
 package me.max.recipewebsite.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import me.max.recipewebsite.model.Ingredient;
 import me.max.recipewebsite.model.Recipe;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import me.max.recipewebsite.services.RecipeServicesImpl;
+
 @RequestMapping("/recipes")
-@Controller
+@RestController
 public class RecipeControlle {
 
     private final RecipeServicesImpl recipeServices;
@@ -16,23 +18,26 @@ public class RecipeControlle {
         this.recipeServices = recipeServices;
     }
 
-    @PostMapping("/{id}")
+    @Operation(description = "Добавление рецепта ")
+    @PostMapping("addRecipe")
     public void addRecipe(@PathVariable int id, Recipe recipe) {
         recipeServices.addRecipe(recipe);
 
     }
 
+    @Operation(description = "Получение рецепта по id")
     @GetMapping("/{id}")
     public Recipe getRecipe(int id) {
         return recipeServices.getRecipe(id);
     }
 
+    @Operation(description = "Изменение рецепта по id")
     @PutMapping("/{id}")
-    public Ingredient editRecipe(int id, Recipe recipe) {
+    public Ingredient editRecipe(@PathVariable int id, @RequestBody Recipe recipe) {
         return recipeServices.editRecipe(id, recipe).getBody();
     }
 
-
+    @Operation(description = "Удаление рецепта по id")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRecipe(@PathVariable int id) {
         if (recipeServices.deleteRecipe(id)) {
