@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import me.max.recipewebsite.model.Ingredient;
 import me.max.recipewebsite.model.Recipe;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import me.max.recipewebsite.services.RecipeServicesImpl;
 
@@ -14,13 +13,14 @@ public class RecipeControlle {
 
     private final RecipeServicesImpl recipeServices;
 
+
     public RecipeControlle(RecipeServicesImpl recipeServices) {
         this.recipeServices = recipeServices;
     }
 
     @Operation(description = "Добавление рецепта ")
-    @PostMapping("addRecipe")
-    public void addRecipe(@PathVariable int id, Recipe recipe) {
+    @PostMapping("/addRecipe/1")
+    public void addRecipe(Recipe recipe) {
         recipeServices.addRecipe(recipe);
 
     }

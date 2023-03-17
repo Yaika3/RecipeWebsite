@@ -1,22 +1,32 @@
 package me.max.recipewebsite.services;
 
-import io.swagger.v3.oas.annotations.Operation;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import me.max.recipewebsite.model.Ingredient;
 import me.max.recipewebsite.model.Recipe;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.Map;
 import java.util.TreeMap;
 
 @Service
 public class RecipeServicesImpl {
+    private final FileService fileService;
+    private int id = 0;
+    private Map<Integer, Recipe> recipeMap = new TreeMap<>();
 
-    public int id = 0;
-    private final Map<Integer, Recipe> recipeMap = new TreeMap<>();
+    public RecipeServicesImpl(FileService fileService) {
+        this.fileService = fileService;
+        saveToFIle();
+    }
 
     public void addRecipe(Recipe recipe) {
-        recipeMap.put(id++, recipe);
+        recipeMap.put(id ++,recipe);
+
+
 
     }
 
@@ -29,7 +39,7 @@ public class RecipeServicesImpl {
             recipeMap.put(id, recipe);
             return ResponseEntity.notFound().build();
 
-        }
+        }saveToFIle();
         return null;
 
     }
@@ -37,6 +47,28 @@ public class RecipeServicesImpl {
     public boolean deleteRecipe(int id) {
         recipeMap.remove(id);
         return true;
+    }
+    private void saveToFIle() {
+        try {
+            String json = new ObjectMapper().writeValueAsString(recipeMap);
+            fileService.saveToFile(json);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void readFromFile() {
+        String json = fileService.readFromFile();
+        try {
+            recipeMap = new ObjectMapper().readValue(json, new TypeReference<TreeMap<Integer, Recipe>>() {
+            });
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @PostConstruct
+    private void init() {
+        readFromFile();
     }
 
 
