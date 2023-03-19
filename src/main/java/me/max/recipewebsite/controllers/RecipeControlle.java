@@ -20,14 +20,14 @@ public class RecipeControlle {
 
     @Operation(description = "Добавление рецепта ")
     @PostMapping("/addRecipe/1")
-    public void addRecipe(Recipe recipe) {
+    public void addRecipe(@RequestBody Recipe recipe) {
         recipeServices.addRecipe(recipe);
 
     }
 
     @Operation(description = "Получение рецепта по id")
     @GetMapping("/{id}")
-    public Recipe getRecipe(int id) {
+    public Recipe getRecipe(@PathVariable int id) {
         return recipeServices.getRecipe(id);
     }
 

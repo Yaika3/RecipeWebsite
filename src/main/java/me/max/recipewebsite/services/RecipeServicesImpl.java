@@ -20,11 +20,12 @@ public class RecipeServicesImpl {
 
     public RecipeServicesImpl(FileService fileService) {
         this.fileService = fileService;
-        saveToFIle();
+
     }
 
     public void addRecipe(Recipe recipe) {
         recipeMap.put(id ++,recipe);
+        saveToFIle();
 
 
 
@@ -51,7 +52,7 @@ public class RecipeServicesImpl {
     private void saveToFIle() {
         try {
             String json = new ObjectMapper().writeValueAsString(recipeMap);
-            fileService.saveToFile(json);
+            fileService.saveToFileRecipe(json);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

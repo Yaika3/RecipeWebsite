@@ -50,7 +50,7 @@ public class IngredientServiceImpl {
     private void saveToFIle() {
         try {
             String json = new ObjectMapper().writeValueAsString(ingredientMap);
-            fileService.saveToFile(json);
+            fileService.saveToFileIngredient(json);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
