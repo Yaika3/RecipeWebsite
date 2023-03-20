@@ -9,4 +9,5 @@ public interface FileService {
 
     String readFromFile();
 
+    String readFromFileIngredient();
 }

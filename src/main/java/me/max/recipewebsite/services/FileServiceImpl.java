@@ -48,6 +48,14 @@ public class FileServiceImpl implements FileService {
             throw new RuntimeException(e);
         }
     }
+    @Override
+    public String readFromFileIngredient() {
+        try {
+            return Files.readString(Path.of(dataFilePath,dataFileNameIngredient));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public boolean cleanDataFile() {
         try {

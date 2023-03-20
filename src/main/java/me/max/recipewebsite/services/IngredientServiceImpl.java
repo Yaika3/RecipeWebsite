@@ -57,7 +57,7 @@ public class IngredientServiceImpl {
     }
 
     private void readFromFile() {
-        String json = fileService.readFromFile();
+        String json = fileService.readFromFileIngredient();
         try {
             ingredientMap = new ObjectMapper().readValue(json, new TypeReference<TreeMap<Integer, Ingredient>>() {
             });
