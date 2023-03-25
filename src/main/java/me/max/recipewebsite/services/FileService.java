@@ -1,5 +1,7 @@
 package me.max.recipewebsite.services;
 
+import java.io.File;
+
 public interface FileService {
 //    boolean saveToFile(String json);
 
@@ -10,4 +12,8 @@ public interface FileService {
     String readFromFile();
 
     String readFromFileIngredient();
+
+    boolean cleanDataFile();
+
+    File getDataFile();
 }
