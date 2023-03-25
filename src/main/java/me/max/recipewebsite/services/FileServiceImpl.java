@@ -19,22 +19,22 @@ public class FileServiceImpl implements FileService {
     private String dataFileNameIngredient;
 
 
-
     @Override
     public boolean saveToFileRecipe(String json) {
         try {
             cleanDataFile();
-            Files.writeString(Path.of(dataFilePath,dataFileName), json);
+            Files.writeString(Path.of(dataFilePath, dataFileName), json);
             return true;
         } catch (IOException e) {
             return false;
         }
     }
+
     @Override
     public boolean saveToFileIngredient(String json) {
         try {
             cleanDataFile();
-            Files.writeString(Path.of(dataFilePath,dataFileNameIngredient), json);
+            Files.writeString(Path.of(dataFilePath, dataFileNameIngredient), json);
             return true;
         } catch (IOException e) {
             return false;
@@ -44,23 +44,25 @@ public class FileServiceImpl implements FileService {
     @Override
     public String readFromFile() {
         try {
-            return Files.readString(Path.of(dataFilePath,dataFileName));
+            return Files.readString(Path.of(dataFilePath, dataFileName));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public String readFromFileIngredient() {
         try {
-            return Files.readString(Path.of(dataFilePath,dataFileNameIngredient));
+            return Files.readString(Path.of(dataFilePath, dataFileNameIngredient));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public boolean cleanDataFile() {
         try {
-            Path path = Path.of(dataFilePath,dataFileName);
+            Path path = Path.of(dataFilePath, dataFileName);
             Files.deleteIfExists(path);
             Files.createFile(path);
             return true;
@@ -68,8 +70,18 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
         }
         return false;
-    }@Override
-    public File getDataFile(){
+    }
+    @Override
+    public File getDataFile() {
         return new File(dataFilePath + "/" + dataFileName);
     }
+    @Override
+    public File getDataFileRecipe() {
+        return new File(dataFilePath + "/" + dataFileName);
+    }
+    @Override
+    public File getDataFileIngredient() {
+        return new File(dataFilePath + "/" + dataFileNameIngredient);
+    }
+
 }

@@ -33,10 +33,10 @@ public class FileController {
         }
     }
 
-    @PutMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Void> uploadDataFile(@RequestParam MultipartFile file) {
+    @PutMapping(value = "/importRecipe", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> uploadDataFileRecipe(@RequestParam MultipartFile file) {
         fileService.cleanDataFile();
-        File dataFile = fileService.getDataFile();
+        File dataFile = fileService.getDataFileRecipe();
         try (FileOutputStream fos = new FileOutputStream(dataFile)) {
             IOUtils.copy(file.getInputStream(), fos);
             return ResponseEntity.ok().build();
@@ -46,6 +46,20 @@ public class FileController {
         } return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 
     }
+    @PutMapping(value = "/importIngredient", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> uploadDataFileIngredient(@RequestParam MultipartFile file) {
+        fileService.cleanDataFile();
+        File dataFile = fileService.getDataFileIngredient();
+        try (FileOutputStream fos = new FileOutputStream(dataFile)) {
+            IOUtils.copy(file.getInputStream(), fos);
+            return ResponseEntity.ok().build();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+    }
+
 
 
     }
