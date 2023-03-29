@@ -21,7 +21,7 @@ public class FileController {
         this.fileService = fileService;
     }
 
-    @GetMapping(value = "/export", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/export")
     public ResponseEntity<InputStreamResource> dowloadDataFile() throws FileNotFoundException {
         File file = fileService.getDataFile();
         if (file.exists()) {
