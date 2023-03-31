@@ -50,7 +50,7 @@ public class RecipeServicesImpl {
         recipeMap.remove(id);
         return true;
     }
-    private void saveToFIle() {
+    public void saveToFIle() {
         try {
             String json = new ObjectMapper().writeValueAsString(recipeMap);
             fileService.saveToFileRecipe(json);
@@ -71,6 +71,7 @@ public class RecipeServicesImpl {
 
     @PostConstruct
     private void init() {
+
         readFromFile();
     }
 

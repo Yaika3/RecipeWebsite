@@ -1,6 +1,7 @@
 package me.max.recipewebsite.controllers;
 
 import me.max.recipewebsite.services.FileService;
+import me.max.recipewebsite.services.RecipeServicesImpl;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +17,7 @@ import java.io.*;
 @RequestMapping("/files")
 public class FileController {
     private final FileService fileService;
+    private RecipeServicesImpl recipeServices;
 
     public FileController(FileService fileService) {
         this.fileService = fileService;
@@ -52,6 +54,7 @@ public class FileController {
         File dataFile = fileService.getDataFileIngredient();
         try (FileOutputStream fos = new FileOutputStream(dataFile)) {
             IOUtils.copy(file.getInputStream(), fos);
+            recipeServices.saveToFIle();
             return ResponseEntity.ok().build();
         } catch (IOException e) {
             e.printStackTrace();
