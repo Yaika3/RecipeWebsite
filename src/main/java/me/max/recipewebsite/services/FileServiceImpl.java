@@ -29,6 +29,16 @@ public class FileServiceImpl implements FileService {
             return false;
         }
     }
+    @Override
+    public boolean saveToFileRecipeTXT(String json) {
+        try {
+            cleanDataFile();
+            Files.writeString(Path.of(dataFilePath, dataFileName), json);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
 
     @Override
     public boolean saveToFileIngredient(String json) {

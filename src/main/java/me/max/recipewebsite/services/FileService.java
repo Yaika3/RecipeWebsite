@@ -8,6 +8,8 @@ public interface FileService {
 
     boolean saveToFileRecipe(String json);
 
+    boolean saveToFileRecipeTXT(String json);
+
     boolean saveToFileIngredient(String json);
 
     String readFromFile();

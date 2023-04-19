@@ -13,7 +13,6 @@ public class RecipeControlle {
 
     private final RecipeServicesImpl recipeServices;
 
-
     public RecipeControlle(RecipeServicesImpl recipeServices) {
         this.recipeServices = recipeServices;
     }

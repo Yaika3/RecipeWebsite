@@ -1,5 +1,6 @@
 package me.max.recipewebsite.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import me.max.recipewebsite.services.FileService;
 import me.max.recipewebsite.services.RecipeServicesImpl;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -24,6 +25,7 @@ public class FileController {
     }
 
     @GetMapping(value = "/export")
+    @Operation(description =  " Метод для скачивания рецепта ")
     public ResponseEntity<InputStreamResource> dowloadDataFile() throws FileNotFoundException {
         File file = fileService.getDataFile();
         if (file.exists()) {
@@ -34,6 +36,19 @@ public class FileController {
             return ResponseEntity.noContent().build();
         }
     }
+    @GetMapping(value = "/exportTEXT")
+    @Operation(description =  " Метод для скачивания рецепта в виде текста ")
+    public ResponseEntity<InputStreamResource> downloadDataFileText() throws FileNotFoundException {
+        File dowFile = fileService.getDataFile();
+        if (dowFile.exists()) {
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(dowFile));
+            return ResponseEntity.ok().contentType(MediaType.TEXT_PLAIN).header(HttpHeaders.CONTENT_DISPOSITION, "attachment; fileName =\"Recipe.text \"").contentLength(dowFile.length()).body(resource);
+
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 
     @PutMapping(value = "/importRecipe", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> uploadDataFileRecipe(@RequestParam MultipartFile file) {
