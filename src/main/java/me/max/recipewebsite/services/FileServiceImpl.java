@@ -1,6 +1,8 @@
 package me.max.recipewebsite.services;
 
+import me.max.recipewebsite.model.Ingredient;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -56,7 +58,7 @@ public class FileServiceImpl implements FileService {
         try {
             return Files.readString(Path.of(dataFilePath, dataFileName));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return "{}";
         }
     }
 
@@ -65,7 +67,7 @@ public class FileServiceImpl implements FileService {
         try {
             return Files.readString(Path.of(dataFilePath, dataFileNameIngredient));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return "{}";
         }
     }
 
@@ -85,6 +87,8 @@ public class FileServiceImpl implements FileService {
     public File getDataFile() {
         return new File(dataFilePath + "/" + dataFileName);
     }
+
+
     @Override
     public File getDataFileRecipe() {
 
